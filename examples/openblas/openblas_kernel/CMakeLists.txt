@@ -29,9 +29,13 @@ endif()
 if(OPENBLAS_TARGET_FALLBACK)
     find_library(OPENBLAS_LIB
         NAMES
+            openblas64_ # JSC ILP64 build, matches the default 64bit headers
+            openblas64  # JSC ILP64 build (alternate name)
             openblas # Ubuntu uses the same name
 	        openblaso # Fedora name of the openmp version
     	PATHS
+            $ENV{EBROOTOPENBLAS}/lib64   # JSC module
+            $ENV{EBROOTOPENBLAS}/lib     # JSC module (fallback)
             /usr/lib/x86_64-linux-gnu/openblas-openmp/ # ubuntu openmp
             /usr/lib64/ # fedora openmp
 	        NO_DEFAULT_PATH  # Prevent picking system default first
@@ -39,6 +43,7 @@ if(OPENBLAS_TARGET_FALLBACK)
     find_path(OPENBLAS_INCLUDE_DIR
         NAMES cblas.h
         PATHS
+            $ENV{EBROOTOPENBLAS}/include   # JSC module
             /usr/include/x86_64-linux-gnu/openblas-openmp # ubuntu openmp
             /usr/include/openblas # fedora openmp
 	        NO_DEFAULT_PATH  # Prevent picking system default first

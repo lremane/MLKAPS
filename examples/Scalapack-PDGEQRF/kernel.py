@@ -20,7 +20,7 @@ NODES = 1
 CORES = 128
 BUNIT = 8            # block unit, the "8" in the Table 5 formulas
 BLOCK_UNIT_CAP = 16  # the "16" cap in the Table 5 formulas
-NITER = 3
+NITER = 1
 PENALTY = 1e12
 
 DRIVER = os.path.join(

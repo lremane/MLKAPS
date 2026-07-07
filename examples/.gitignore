@@ -1,5 +1,5 @@
 output
-mlkaps_output
+mlkaps_output_*
 *.png
 *.mp4
 *.csv
